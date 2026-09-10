@@ -1,0 +1,25 @@
+[package]
+name = "mi-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "mi"
+path = "src/main.rs"
+
+[dependencies]
+mi-core.workspace = true
+mi-storage.workspace = true
+mi-models.workspace = true
+mi-providers.workspace = true
+clap.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+config.workspace = true
+anyhow.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+serde = { workspace = true }
+sqlx.workspace = true

@@ -1,0 +1,17 @@
+[package]
+name = "mi-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+mi-models.workspace = true
+mi-storage.workspace = true
+sqlx.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+ipnetwork.workspace = true
+chrono.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

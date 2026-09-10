@@ -1,0 +1,17 @@
+[package]
+name = "mi-storage"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+mi-models.workspace = true
+sqlx.workspace = true
+chrono.workspace = true
+uuid.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

@@ -1,0 +1,45 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/mi-models",
+    "crates/mi-storage",
+    "crates/mi-core",
+    "crates/mi-providers",
+    "crates/mi-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Null"]
+license = "MIT"
+repository = "https://github.com/CHANGE_ME/miracle-intelligence"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+async-trait = "0.1"
+sqlx = { version = "0.7", default-features = false, features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "chrono",
+    "uuid",
+    "macros",
+    "migrate",
+] }
+thiserror = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { version = "4", features = ["derive"] }
+reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls"] }
+config = "0.14"
+ipnetwork = "0.20"
+
+mi-models = { path = "crates/mi-models" }
+mi-storage = { path = "crates/mi-storage" }
+mi-core = { path = "crates/mi-core" }
+mi-providers = { path = "crates/mi-providers" }

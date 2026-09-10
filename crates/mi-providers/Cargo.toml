@@ -1,0 +1,17 @@
+[package]
+name = "mi-providers"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+mi-models.workspace = true
+async-trait.workspace = true
+reqwest.workspace = true
+serde_json.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
