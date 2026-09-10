@@ -12,6 +12,7 @@ thiserror.workspace = true
 tracing.workspace = true
 ipnetwork.workspace = true
 chrono.workspace = true
+uuid.workspace = true
 
 [dev-dependencies]
 tokio.workspace = true
