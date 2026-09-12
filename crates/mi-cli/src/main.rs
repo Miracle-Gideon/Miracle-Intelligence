@@ -18,6 +18,7 @@ async fn main() -> anyhow::Result<()> {
         Command::Scope { action } => commands::scope::handle(&pool, action).await?,
         Command::Config { action } => commands::config_cmd::handle(&app_config, action).await?,
         Command::Status => commands::status::handle(&pool, &app_config).await?,
+        Command::Host { ip } => commands::host::handle(&pool, &app_config, ip).await?,
     }
 
     Ok(())

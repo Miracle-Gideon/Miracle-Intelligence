@@ -31,8 +31,15 @@ pub enum Command {
         #[command(subcommand)]
         action: ConfigAction,
     },
-    /// Show DB connectivity, counts, and API key health
+        Status,
+}    Status,
+}/// Show DB connectivity, counts, and API key health
     Status,
+    /// Look up a single host via Shodan and store the result
+    Host {
+        /// IP address to look up
+        ip: String,
+    },
 }
 
 #[derive(Subcommand)]
