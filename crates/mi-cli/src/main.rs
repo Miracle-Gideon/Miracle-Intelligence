@@ -1,6 +1,7 @@
 mod cli;
 mod commands;
 mod settings;
+mod shell;
 
 use clap::Parser;
 use cli::{Cli, Command};
@@ -15,10 +16,11 @@ async fn main() -> anyhow::Result<()> {
     let pool = mi_storage::init_db(&app_config.db_path).await?;
 
     match cli.command {
-        Command::Scope { action } => commands::scope::handle(&pool, action).await?,
-        Command::Config { action } => commands::config_cmd::handle(&app_config, action).await?,
-        Command::Status => commands::status::handle(&pool, &app_config).await?,
-        Command::Host { ip } => commands::host::handle(&pool, &app_config, ip).await?,
+        Some(Command::Scope { action }) => commands::scope::handle(&pool, action).await?,
+        Some(Command::Config { action }) => commands::config_cmd::handle(&app_config, action).await?,
+        Some(Command::Status) => commands::status::handle(&pool, &app_config).await?,
+        Some(Command::Host { ip }) => commands::host::handle(&pool, &app_config, ip).await?,
+        Some(Command::Shell) | None => shell::run(&pool, &app_config).await?,
     }
 
     Ok(())
