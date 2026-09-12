@@ -16,7 +16,7 @@ pub struct Cli {
     pub config: Option<String>,
 
     #[command(subcommand)]
-    pub command: Command,
+    pub command: Option<Command>,
 }
 
 #[derive(Subcommand)]
@@ -31,15 +31,15 @@ pub enum Command {
         #[command(subcommand)]
         action: ConfigAction,
     },
-        Status,
-}    Status,
-}/// Show DB connectivity, counts, and API key health
+    /// Show DB connectivity, counts, and API key health
     Status,
     /// Look up a single host via Shodan and store the result
     Host {
         /// IP address to look up
         ip: String,
     },
+    /// Enter interactive shell mode (also the default when no command is given)
+    Shell,
 }
 
 #[derive(Subcommand)]
@@ -58,18 +58,3 @@ pub enum ScopeAction {
 
         /// RFC3339 expiry timestamp, e.g. 2026-12-31T23:59:59Z
         #[arg(long)]
-        until: Option<String>,
-    },
-    /// List all registered scope entries
-    List,
-    /// Remove a scope entry by id
-    Remove { id: String },
-}
-
-#[derive(Subcommand)]
-pub enum ConfigAction {
-    /// Print resolved configuration (secrets masked)
-    Show,
-    /// Print where configuration is loaded from
-    Path,
-}
