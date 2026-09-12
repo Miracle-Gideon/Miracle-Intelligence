@@ -58,3 +58,18 @@ pub enum ScopeAction {
 
         /// RFC3339 expiry timestamp, e.g. 2026-12-31T23:59:59Z
         #[arg(long)]
+        until: Option<String>,
+    },
+    /// List all registered scope entries
+    List,
+    /// Remove a scope entry by id
+    Remove { id: String },
+}
+
+#[derive(Subcommand)]
+pub enum ConfigAction {
+    /// Print resolved configuration (secrets masked)
+    Show,
+    /// Print where configuration is loaded from
+    Path,
+}
